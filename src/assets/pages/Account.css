@@ -1,0 +1,111 @@
+.account-page {
+    background: url("/backgroundaccount.png") no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  
+  .login-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    background-color: rgba(0, 0, 0, 0.5); 
+    border-radius: 10px;
+  }
+  
+  .auth-form {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+  }
+  
+  .auth-form label {
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+  
+  .auth-form input {
+    margin-bottom: 10px;
+    padding: 8px;
+    border: none;
+    border-bottom: 1px solid white;
+    background: transparent;
+    color: white;
+  }
+  
+  .auth-form input::placeholder {
+    color: #ccc;
+  }
+  
+  .auth-form button {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #14532d;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .remember-me {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    color: white;
+  }
+  
+  .footer-contact {
+    background: #f5f5f5;
+    text-align: center;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+  }
+  
+  .footer-contact h2 {
+    color: #14532d;
+    margin-bottom: 20px;
+  }
+  
+  .social-icons {
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 20px;
+  }
+  
+  .social-icons i {
+    color: #14532d;
+  }
+  
+  
+  .register-text {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: white;
+    text-align: center;
+  }
+  
+  .register-link {
+    color: white;
+    text-decoration: underline;
+    margin-left: 5px;
+  }
+  
+  .register-link:hover {
+    color: #14532d;
+    text-decoration: underline;
+    margin-left: 5px;
+  }
