@@ -11,7 +11,7 @@ const OneSingleBlog = () => {
 
   useEffect(() => {
     axios
-      .get(`https://virtual-garden-backend.vercel.app/api/blog/${id}`)
+      .get(`http://localhost:5000/api/blog/${id}`)
       .then((res) => {
         setBlog(res.data);
       })
@@ -30,7 +30,7 @@ const OneSingleBlog = () => {
         <img
           src={
             blog.imageUrl
-              ? `https://virtual-garden-backend.vercel.app/uploads/${blog.imageUrl}`
+              ? `http://localhost:5000/uploads/${blog.imageUrl}`
               : "/fallback.png"
           }
           onError={(e) => {

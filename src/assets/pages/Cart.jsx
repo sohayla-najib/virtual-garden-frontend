@@ -17,7 +17,7 @@ const Cart = () => {
     }
 
     axios
-      .get("https://virtual-garden-backend.vercel.app/api/shop/cart", {
+      .get("http://localhost:5000/api/shop/cart", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => setCartItems(res.data))
@@ -26,7 +26,7 @@ const Cart = () => {
 
   const handleRemove = (itemId) => {
     axios
-      .delete(`https://virtual-garden-backend.vercel.app/api/shop/cart/${itemId}`, {
+      .delete(`http://localhost:5000/api/shop/cart/${itemId}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then(() => {
@@ -39,7 +39,7 @@ const Cart = () => {
     if (newQty < 1) return;
     axios
       .put(
-        `https://virtual-garden-backend.vercel.app/api/shop/cart/${itemId}`,
+        `http://localhost:5000/api/shop/cart/${itemId}`,
         { quantity: newQty },
         { headers: { Authorization: `Bearer ${token}` } }
       )
@@ -73,7 +73,7 @@ const Cart = () => {
                   <img
                     src={
                       item.Product.imageUrl
-                        ? `https://virtual-garden-backend.vercel.app/uploads/${item.Product.imageUrl}`
+                        ? `http://localhost:5000/uploads/${item.Product.imageUrl}`
                         : "/fallback.png"
                     }
                     alt={item.Product.name}

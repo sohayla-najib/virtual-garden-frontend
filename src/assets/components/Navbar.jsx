@@ -19,7 +19,7 @@ const Navbar = () => {
   useEffect(() => {
     if (token) {
       axios
-        .get("https://virtual-garden-backend.vercel.app/api/shop/cart", {
+        .get("http://localhost:5000/api/shop/cart", {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((res) => {

@@ -37,7 +37,7 @@ const AdminCreateProduct = () => {
     }
 
     try {
-      await axios.post("https://virtual-garden-backend.vercel.app/api/shop/products", data, {
+      await axios.post("http://localhost:5000/api/shop/products", data, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data",
@@ -66,7 +66,7 @@ const AdminCreateProduct = () => {
     const fetchCategories = async () => {
       try {
         const response = await axios.get(
-          "https://virtual-garden-backend.vercel.app/api/shop/categories",
+          "http://localhost:5000/api/shop/categories",
           {
             headers: { Authorization: `Bearer ${Cookies.get("token")}` },
           }

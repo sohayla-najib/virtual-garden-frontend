@@ -26,7 +26,7 @@ const AdminDashboard = () => {
   const fetchDashboardMetrics = async () => {
     const token = Cookies.get("token");
     try {
-      const res = await axios.get("https://virtual-garden-backend.vercel.app/api/dashboard", {
+      const res = await axios.get("http://localhost:5000/api/dashboard", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setMetrics(res.data);

@@ -27,7 +27,7 @@ const Checkout = () => {
     const customerId = decoded.id;
   
     try {
-      const cartRes = await axios.get("https://virtual-garden-backend.vercel.app/api/shop/cart", {
+      const cartRes = await axios.get("http://localhost:5000/api/shop/cart", {
         headers: { Authorization: `Bearer ${token}` },
       });
   
@@ -44,7 +44,7 @@ const Checkout = () => {
       );
   
       await axios.post(
-        "https://virtual-garden-backend.vercel.app/api/shop/checkout",
+        "http://localhost:5000/api/shop/checkout",
         {
           customerId,
           totalAmount,
@@ -57,7 +57,7 @@ const Checkout = () => {
   
       await Promise.all(
         cartItems.map((item) =>
-          axios.delete(`https://virtual-garden-backend.vercel.app/api/shop/cart/${item.id}`, {
+          axios.delete(`http://localhost:5000/api/shop/cart/${item.id}`, {
             headers: { Authorization: `Bearer ${token}` },
           })
         )

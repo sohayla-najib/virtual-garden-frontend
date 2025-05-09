@@ -12,7 +12,7 @@ const Register = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("https://virtual-garden-backend.vercel.app/api/auth/register", {
+      await axios.post("http://localhost:5000/api/auth/register", {
         username: name,
         email,
         password,

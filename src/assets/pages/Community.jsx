@@ -10,7 +10,7 @@ const Community = () => {
 
   useEffect(() => {
     axios
-      .get("https://virtual-garden-backend.vercel.app/api/blog")
+      .get("http://localhost:5000/api/blog")
       .then((res) => {
         setBlogs(res.data);
       })
