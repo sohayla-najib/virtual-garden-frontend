@@ -21,7 +21,7 @@ const AdminCreateBlog = () => {
     }
 
     try {
-      await axios.post("http://localhost:5000/api/blog", formData, {
+      await axios.post("https://virtual-garden-backend.vercel.app/api/blog", formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data",

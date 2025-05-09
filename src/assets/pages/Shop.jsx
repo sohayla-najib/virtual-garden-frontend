@@ -12,7 +12,7 @@ const Shop = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/shop/products")
+      .get("https://virtual-garden-backend.vercel.app/api/shop/products")
       .then((res) => setProducts(res.data))
       .catch((err) => console.error("Error loading products:", err));
   }, []);
@@ -27,7 +27,7 @@ const Shop = () => {
 
     axios
       .post(
-        "http://localhost:5000/api/shop/cart",
+        "https://virtual-garden-backend.vercel.app/api/shop/cart",
         { productId, quantity: 1 },
         { headers: { Authorization: `Bearer ${token}` } }
       )

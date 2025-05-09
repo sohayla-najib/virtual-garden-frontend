@@ -10,7 +10,7 @@ const AdminOrdersPage = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/allorders");
+        const response = await axios.get("https://virtual-garden-backend.vercel.app/api/allorders");
         setOrders(response.data);
       } catch (err) {
         setError(err.response?.data?.error || "Failed to fetch orders.");

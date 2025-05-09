@@ -17,7 +17,7 @@ const Orders = () => {
     }
 
     axios
-      .get("http://localhost:5000/api/shop/orders", {
+      .get("https://virtual-garden-backend.vercel.app/api/shop/orders", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => setOrders(res.data))
