@@ -1,5 +1,4 @@
 .home-container {
-  min-height: 100vh;
   height: 100vh;
   width: 100vw;
   background: url('/download.png') no-repeat center center;
@@ -8,13 +7,18 @@
   text-align: center;
   display: flex;
   flex-direction: column;
-  /* align-items: center; center horizontally */
-  justify-content: flex-start; /* align everything to the top */
-  /* padding-top: 80px; */
-  padding-bottom: 120px;
   position: relative;
 }
 
+.hero-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  color: white;
+}
 
 .hero-section h1 {
   font-size: 2.5rem;
@@ -26,8 +30,6 @@
   font-size: 1.1rem;
   margin-bottom: 30px;
   max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
   color: white;
 }
 
@@ -73,6 +75,25 @@
 
 @media (max-width: 768px) {
   .home-container {
-    height: 100dvh; /* modern way to support dynamic mobile viewport height */
+    height: 100dvh;
+  }
+
+  .hero-section h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero-section p {
+    font-size: 1rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .primary-btn,
+  .secondary-btn {
+    width: 100%;
+    max-width: 250px;
   }
 }

@@ -43,7 +43,6 @@ const Shop = () => {
   return (
     <div className="shop-page">
       <Navbar />
-
       <div className="shop-content">
         <h2>Shop Our Plants</h2>
         <div className="product-grid">
@@ -60,7 +59,7 @@ const Shop = () => {
                   className="product-img"
                 />
               </div>
-              <h3>{product.name}</h3>
+              <h3 className="product-title">{product.name}</h3>
               <div className="price-buy">
                 <span className="price">${product.price}</span>
                 <button
@@ -73,7 +72,7 @@ const Shop = () => {
             </div>
           ))}
         </div>
-      </div><br/><br/><br/><br/><br/><br/><br/>
+      </div>
       <ContactFooter />
     </div>
   );

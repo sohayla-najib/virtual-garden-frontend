@@ -1,13 +1,13 @@
+/* Footer should be at the end of the page */
 .footer-contact {
-  position: fixed;
-  bottom: 0;
-  left: 0;
+  position: relative;
   width: 100%;
-  /* padding: 1rem; */
   background-color: rgba(255, 255, 255, 0.95);
   text-align: center;
   box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
-  z-index: 100;
+  padding: 1.5rem 0; /* Added some padding for better spacing */
+  margin-top: 100px; /* This ensures some space between the content above and the footer */
+  clear: both; /* Ensures footer stays below the content */
 }
 
 .social-icons {

@@ -47,8 +47,7 @@ const Community = () => {
                     e.target.src = "/fallback.png";
                   }}
                 />
-                <h3>{blog.title}</h3>
-                <p>{blog.content.slice(0, 100)}...</p>
+                {/* <h3>{blog.title}</h3> */}
                 <span className="author">
                   by {blog.author?.username || "Anonymous"}
                 </span>
