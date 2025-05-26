@@ -6,7 +6,6 @@
   padding: 20px;
   display: flex;
   flex-direction: column;
-  position: fixed;
   left: 0;
   top: 0;
   z-index: 1000;
@@ -87,6 +86,10 @@
 @media screen and (max-width: 768px) {
   .sidebar-toggle {
     display: block;
+  }
+
+  .admin-sidebar{
+    position: fixed;
   }
 }
 
