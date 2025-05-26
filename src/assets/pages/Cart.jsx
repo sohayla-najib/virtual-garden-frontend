@@ -3,10 +3,12 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import Loader from "../components/Loader";  // import loader
 import "./Cart.css";
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
+  const [loading, setLoading] = useState(true);  // loader state
   const token = Cookies.get("token");
   const navigate = useNavigate();
 
@@ -20,8 +22,14 @@ const Cart = () => {
       .get("http://localhost:5000/api/shop/cart", {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then((res) => setCartItems(res.data))
-      .catch((err) => console.error("Error fetching cart:", err));
+      .then((res) => {
+        setCartItems(res.data);
+        setLoading(false);  // done loading
+      })
+      .catch((err) => {
+        console.error("Error fetching cart:", err);
+        setLoading(false);  // hide loader even on error
+      });
   }, [token, navigate]);
 
   const handleRemove = (itemId) => {
@@ -63,21 +71,23 @@ const Cart = () => {
       <Navbar />
       <div className="cart-container">
         <h2>Your Cart</h2>
-        {cartItems.length === 0 ? (
+        {loading ? (
+          <Loader />  // show loader while fetching
+        ) : cartItems.length === 0 ? (
           <p>Your cart is empty.</p>
         ) : (
           <>
             <div className="cart-grid">
               {cartItems.map((item) => (
                 <div key={item.id} className="cart-item">
-<img
-  src={
-    item.Product.imageUrl?.startsWith("http")
-      ? item.Product.imageUrl
-      : `http://localhost:5000/uploads/${item.Product.imageUrl}`
-  }
-  alt={item.Product.name}
-/>
+                  <img
+                    src={
+                      item.Product.imageUrl?.startsWith("http")
+                        ? item.Product.imageUrl
+                        : `http://localhost:5000/uploads/${item.Product.imageUrl}`
+                    }
+                    alt={item.Product.name}
+                  />
 
                   <div className="cart-info">
                     <h4>{item.Product.name}</h4>
@@ -89,25 +99,17 @@ const Cart = () => {
                         min="1"
                         value={item.quantity}
                         onChange={(e) =>
-                          handleQuantityChange(
-                            item.id,
-                            parseInt(e.target.value)
-                          )
+                          handleQuantityChange(item.id, parseInt(e.target.value))
                         }
                       />
                     </div>
-                    <button onClick={() => handleRemove(item.id)}>
-                      Remove
-                    </button>
+                    <button onClick={() => handleRemove(item.id)}>Remove</button>
                   </div>
                 </div>
               ))}
             </div>
             <h3>Total: ${totalPrice.toFixed(2)}</h3>
-            <button
-              className="checkout-btn"
-              onClick={() => navigate("/checkout")}
-            >
+            <button className="checkout-btn" onClick={() => navigate("/checkout")}>
               Proceed to Checkout
             </button>
           </>

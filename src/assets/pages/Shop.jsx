@@ -5,16 +5,24 @@ import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import "./Shop.css";
 import ContactFooter from "../components/ContactFooter";
+import Loader from "../components/Loader"; // import loader
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true); // loading state
   const navigate = useNavigate();
 
   useEffect(() => {
     axios
       .get("http://localhost:5000/api/shop/products")
-      .then((res) => setProducts(res.data))
-      .catch((err) => console.error("Error loading products:", err));
+      .then((res) => {
+        setProducts(res.data);
+        setLoading(false); // done loading
+      })
+      .catch((err) => {
+        console.error("Error loading products:", err);
+        setLoading(false); // hide loader on error too
+      });
   }, []);
 
   const handleBuyNow = (productId) => {
@@ -45,33 +53,37 @@ const Shop = () => {
       <Navbar />
       <div className="shop-content">
         <h2>Shop Our Plants</h2>
-        <div className="product-grid">
-          {products.map((product) => (
-            <div key={product.id} className="product-card">
-              <div className="product-img-container">
-                <img
-                  src={product.imageUrl ? product.imageUrl : "/fallback.png"}
-                  onError={(e) => {
-                    e.target.onerror = null;
-                    e.target.src = "/fallback.png";
-                  }}
-                  alt={product.name}
-                  className="product-img"
-                />
+        {loading ? (
+          <Loader />  // show loader while loading
+        ) : (
+          <div className="product-grid">
+            {products.map((product) => (
+              <div key={product.id} className="product-card">
+                <div className="product-img-container">
+                  <img
+                    src={product.imageUrl ? product.imageUrl : "/fallback.png"}
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = "/fallback.png";
+                    }}
+                    alt={product.name}
+                    className="product-img"
+                  />
+                </div>
+                <h3 className="product-title">{product.name}</h3>
+                <div className="price-buy">
+                  <span className="price">${product.price}</span>
+                  <button
+                    className="buy-btn"
+                    onClick={() => handleBuyNow(product.id)}
+                  >
+                    Buy Now
+                  </button>
+                </div>
               </div>
-              <h3 className="product-title">{product.name}</h3>
-              <div className="price-buy">
-                <span className="price">${product.price}</span>
-                <button
-                  className="buy-btn"
-                  onClick={() => handleBuyNow(product.id)}
-                >
-                  Buy Now
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
       <ContactFooter />
     </div>
