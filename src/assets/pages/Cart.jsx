@@ -70,14 +70,15 @@ const Cart = () => {
             <div className="cart-grid">
               {cartItems.map((item) => (
                 <div key={item.id} className="cart-item">
-                  <img
-                    src={
-                      item.Product.imageUrl
-                        ? `http://localhost:5000/uploads/${item.Product.imageUrl}`
-                        : "/fallback.png"
-                    }
-                    alt={item.Product.name}
-                  />
+<img
+  src={
+    item.Product.imageUrl?.startsWith("http")
+      ? item.Product.imageUrl
+      : `http://localhost:5000/uploads/${item.Product.imageUrl}`
+  }
+  alt={item.Product.name}
+/>
+
                   <div className="cart-info">
                     <h4>{item.Product.name}</h4>
                     <p>Price: ${item.Product.price}</p>

@@ -10,6 +10,21 @@
     position: relative;
     overflow: hidden;
   }
+
+  .account-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Optional: center form vertically */
+  padding: 2rem;
+}
+
   
   
   .login-form-container {

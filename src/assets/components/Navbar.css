@@ -1,6 +1,6 @@
 .navbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* Center the nav-links horizontally */
   align-items: center;
   padding: 1rem 2rem;
   position: relative;
@@ -13,12 +13,16 @@
   font-size: 1.5rem;
   font-weight: bold;
   color: #004225;
+  position: absolute;
+  left: 2rem; /* Keep the logo on the left */
 }
 
 .nav-links {
   list-style: none;
   display: flex;
   gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
 }
 
 .nav-links li a {
@@ -62,6 +66,8 @@
   cursor: pointer;
   gap: 5px;
   z-index: 1001;
+  position: absolute;
+  right: 2rem;
 }
 
 .hamburger span {
@@ -87,6 +93,7 @@
     padding: 1rem;
     display: none;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 999;
   }
 
   .nav-links.active {
@@ -98,4 +105,3 @@
     margin-bottom: 1rem;
   }
 }
-
